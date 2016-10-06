@@ -14,7 +14,9 @@ const DEFAULT_ZOOM = 4;
 
 @Component({
     selector: 'az-map',
-    templateUrl: 'az-map.component.html'
+    template: `<div id="#div">
+    <ng-content></ng-content>
+    </div>`
 })
 export class AZMapComponent extends AZMapChildComponent implements OnInit {
     public mapId:number;
