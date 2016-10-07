@@ -1,0 +1,12 @@
+{
+  "name": "angular2-gmaps",
+  "version": "0.0.7",
+  "repository": "https://github.com/maksymzav/angular2-gmaps",
+  "author": "Maksym Zavorotynskyi",
+  "keywords": [
+    "angular2 google maps"
+  ],
+  "dependencies": {
+    "polyline": "^0.2.0"
+  }
+}

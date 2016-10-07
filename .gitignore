@@ -2,4 +2,9 @@
 node_modules/
 coverage/
 typings/
-src/app/gmap/compiled/
+/src/app/gmap/compiled/*.ts
+/src/app/gmap/compiled/*.js
+/src/app/gmap/compiled/entities/
+/src/app/gmap/compiled/*.map
+/src/app/gmap/compiled/services/
+/src/app/gmap/compiled/components/

@@ -87,7 +87,28 @@ export class AZMapComponent extends AZMapChildComponent implements OnInit {
     buildDirection() {
         if (this.direction) {
 
-            this.direction.subscribe(request => {
+            this.direction.subscribe((coordinates:{lat: number, lng: number}[]) => {
+                if (coordinates.length < 2){
+                    return;
+                }
+                let request = <DirectionsRequest>{
+                    origin: coordinates.shift(),
+                    destination: coordinates.pop(),
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    optimizeWaypoints: true
+                };
+
+                if (coordinates.length){
+                    request.waypoints = coordinates.map(coord => {
+                        return {
+                            location: new google.maps.LatLng(coord.lat, coord.lng),
+                            stopover: false
+                        }
+                    })
+                }
+
+                console.log(request);
+
                 var directionsService = new google.maps.DirectionsService();
                 var directionsDisplay = new google.maps.DirectionsRenderer();
                 directionsDisplay.setMap(this._wrapper.getNativeMap(this.mapId));
