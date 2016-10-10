@@ -10,7 +10,7 @@ export abstract class AZMapChildComponent {
     protected _element: ElementRef;
 
     protected _defineMapId() {
-        this.mapId = this._element.nativeElement.parentNode.getAttribute('map-id');
+        this.mapId = this._element.nativeElement.parentNode.parentNode.getAttribute('map-id');
     }
 
     protected getComponentOptions() {
