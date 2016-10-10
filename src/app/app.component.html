@@ -6,7 +6,7 @@
         ></az-map-polyline>
 
     </az-map>
-
+    <br>
     <az-map [centerLat]="47.56" [centerLng]="30.58" [zoom]="8" [direction]="direction">
         <az-map-marker *ngFor="let coord of coords2" [latitude]="coord.lat" [longitude]="coord.lng"></az-map-marker>
     </az-map>
