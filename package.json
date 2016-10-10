@@ -1,6 +1,6 @@
 {
-  "name": "An application with angular2-gmaps.",
-  "version": "0.2",
+  "name": "angular2-gmaps",
+  "version": "0.2.1",
   "description": "This application keeps inside angular2-gmaps module and shows it's usage.",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 8080",
