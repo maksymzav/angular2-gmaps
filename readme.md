@@ -60,30 +60,22 @@ To display a direction on your map, use "[direction]" attribute:
 <az-map [centerLat]="47.56" [centerLng]="30.58" [zoom]="8" [direction]="direction">
 </az-map>
 ```
-Obviously, to make this code working, you need to define a direction property in your component class, it will be an Observable.
+The direction variable must be defined as your component class property, and contain an Observable with the list of waypoints, that your direction will consist of. 
 So , your component should import Observable and Observer types:
 `import {Observable, Observer} from "rxjs/Rx";`
 and define a direction property and initialize it with an Observable, that will pass e.g.:
 ```
 public direction = Observable.create((observer:Observer<DirectionsRequest>)=> {
-        observer.next({
-            origin: {lat: 47.5, lng: 30.6},
-            destination: {lat: 47.4, lng: 30.3},
-            travelMode: google.maps.TravelMode.DRIVING,
-            optimizeWaypoints: true,
-            waypoints: [
-                {
-                    location: new google.maps.LatLng(47.3, 30.9),
-                    stopover: false
-                },
-                {
-                    location: new google.maps.LatLng(47.2, 30.1),
-                    stopover: false
-                }
-            ]
-        });
-    });
+   observer.next([
+       {lat: 47.3, lng: 30.9},
+       {lat: 47.5, lng: 30.6},
+       {lat: 47.4, lng: 30.3},
+       {lat: 47.2, lng: 30.1}
+   ]);
+});
 ```
+Current implementation assumes, that your first coordinate will contain a direction origin, and the last one will be a destination point. All other coordinates will consider as waypoints.
+In current implementation the only available mode is driving, and the direction is optimized if it contains waypoints. These behaviour is going to become customizable soon.
 
 ###Add markers
 To add a marker, add az-map-marker tag inside your az-map tag, and specify the [latitude] and [longitude]. For each marker you need a new az-map-marker tag.
